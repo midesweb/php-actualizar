@@ -113,6 +113,12 @@
             color: white;
         }
 
+        .demo-link.naranja {
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            color: white;
+            margin-top: 10px;
+        }
+
         .demo-link .etiqueta {
             font-size: 11px;
             opacity: 0.85;
@@ -140,9 +146,13 @@
 
         <div class="demos">
             <h2>Demos</h2>
-            <a href="rompe-en-84.php" class="demo-link rojo">
-                Código que rompe en PHP 8.4
-                <span class="etiqueta">Funciona en 8.2 · Fatal error en 8.4</span>
+            <a href="rompe-en-80.php" class="demo-link rojo">
+                Código que rompe en PHP 8.0
+                <span class="etiqueta">Funciona en 7.x · Fatal error en 8.0+</span>
+            </a>
+            <a href="deprecate-en-84.php" class="demo-link naranja">
+                Código deprecado en PHP 8.4
+                <span class="etiqueta">Funciona con warnings en 8.4</span>
             </a>
         </div>
 

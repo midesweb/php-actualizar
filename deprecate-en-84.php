@@ -161,8 +161,7 @@ $version = phpversion();
         <div class="warning-box">
             Esta página usa <code>utf8_encode()</code> para convertir texto de ISO-8859-1 a UTF-8,
             patrón habitual en código legacy.<br>
-            <strong>PHP 8.2:</strong> funciona (deprecation notice)&nbsp;&nbsp;
-            <strong>PHP 8.4:</strong> Fatal error — función eliminada.
+            <strong>PHP 8</strong> funciona (deprecation notice)&nbsp;&nbsp;
         </div>
 
         <table>
