@@ -82,6 +82,44 @@
         .info-section p:last-child {
             margin-bottom: 0;
         }
+
+        .demos {
+            margin-top: 28px;
+        }
+
+        .demos h2 {
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .demo-link {
+            display: block;
+            padding: 14px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+            text-align: left;
+        }
+
+        .demo-link:hover { opacity: 0.85; }
+
+        .demo-link.rojo {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .demo-link .etiqueta {
+            font-size: 11px;
+            opacity: 0.85;
+            display: block;
+            margin-top: 3px;
+            font-weight: 400;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +137,15 @@
             <p><strong>Zona horaria:</strong> <?php echo date_default_timezone_get(); ?></p>
             <p><strong>Hora actual:</strong> <?php echo date('d/m/Y H:i:s'); ?></p>
         </div>
+
+        <div class="demos">
+            <h2>Demos</h2>
+            <a href="rompe-en-84.php" class="demo-link rojo">
+                Código que rompe en PHP 8.4
+                <span class="etiqueta">Funciona en 8.2 · Fatal error en 8.4</span>
+            </a>
+        </div>
+
     </div>
 </body>
 </html>
