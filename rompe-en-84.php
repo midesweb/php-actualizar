@@ -1,23 +1,39 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 // utf8_encode() fue DEPRECADA en PHP 8.2 y ELIMINADA en PHP 8.4
 // En 8.2 → funciona (con aviso de deprecación si E_DEPRECATED está activo)
 // En 8.4 → Fatal error: Call to undefined function utf8_encode()
 
 $productos = [
-    ["nombre" => "Jam\xF3n ib\xE9rico",       "precio" => 24.50, "origen" => "Extremadura"],
-    ["nombre" => "Aceitunas ma\xF1zanilla",    "precio" =>  3.90, "origen" => "Sevilla"],
-    ["nombre" => "Queso manche\xE4go",         "precio" =>  8.75, "origen" => "La Mancha"],
-    ["nombre" => "Vi\xF1o Rioja a\xF1ejo",    "precio" => 12.00, "origen" => "La Rioja"],
+    [
+        "nombre" => "Jam\xF3n ib\xE9rico",
+        "precio" => 24.5,
+        "origen" => "Extremadura",
+    ],
+    [
+        "nombre" => "Aceitunas ma\xF1zanilla",
+        "precio" => 3.9,
+        "origen" => "Sevilla",
+    ],
+    [
+        "nombre" => "Queso manche\xE4go",
+        "precio" => 8.75,
+        "origen" => "La Mancha",
+    ],
+    [
+        "nombre" => "Vi\xF1o Rioja a\xF1ejo",
+        "precio" => 12.0,
+        "origen" => "La Rioja",
+    ],
 ];
 
 // Patrón habitual en código legacy: recibir datos en ISO-8859-1
 // y convertirlos a UTF-8 antes de mostrarlos en la web.
 $productos = array_map(function ($p) {
-    $p['nombre'] = utf8_encode($p['nombre']);   // <-- Aquí rompe en PHP 8.4
-    $p['origen'] = utf8_encode($p['origen']);
+    $p["nombre"] = utf8_encode($p["nombre"]); // <-- Aquí rompe en PHP 8.4
+    $p["origen"] = utf8_encode($p["origen"]);
     return $p;
 }, $productos);
 
@@ -162,9 +178,12 @@ $version = phpversion();
                 <?php foreach ($productos as $i => $p): ?>
                 <tr>
                     <td><?= $i + 1 ?></td>
-                    <td><?= htmlspecialchars($p['nombre']) ?></td>
-                    <td><?= htmlspecialchars($p['origen']) ?></td>
-                    <td class="precio"><?= number_format($p['precio'], 2) ?> €</td>
+                    <td><?= htmlspecialchars($p["nombre"]) ?></td>
+                    <td><?= htmlspecialchars($p["origen"]) ?></td>
+                    <td class="precio"><?= number_format(
+                        $p["precio"],
+                        2,
+                    ) ?> €</td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
