@@ -1,26 +1,26 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 // each() fue DEPRECADA en PHP 7.2 y ELIMINADA en PHP 8.0
 // PHP 7.4 → funciona (con aviso de deprecación)
 // PHP 8.0+ → Fatal error: Call to undefined function each()
 
 $configuracion = [
-    'host'      => 'db.miservidor.local',
-    'puerto'    => '3306',
-    'nombre_bd' => 'tienda_online',
-    'charset'   => 'utf8mb4',
-    'timeout'   => '30',
-    'zona_hora' => 'Europe/Madrid',
+    "host" => "db.miservidor.local",
+    "puerto" => "3306",
+    "nombre_bd" => "tienda_online",
+    "charset" => "utf8mb4",
+    "timeout" => "30",
+    "zona_hora" => "Europe/Madrid",
 ];
 
 // Patrón clásico de iteración pre-PHP 7.2:
 // recorrer un array asociativo con each() + list()
 reset($configuracion);
 $items = [];
-while (list($clave, $valor) = each($configuracion)) {
-    $items[] = ['clave' => $clave, 'valor' => $valor];
+while ([$clave, $valor] = each($configuracion)) {
+    $items[] = ["clave" => $clave, "valor" => $valor];
 }
 
 $version = phpversion();
@@ -159,8 +159,12 @@ $version = phpversion();
             <tbody>
                 <?php foreach ($items as $item): ?>
                 <tr>
-                    <td class="clave"><?= htmlspecialchars($item['clave']) ?></td>
-                    <td class="valor"><?= htmlspecialchars($item['valor']) ?></td>
+                    <td class="clave"><?= htmlspecialchars(
+                        $item["clave"],
+                    ) ?></td>
+                    <td class="valor"><?= htmlspecialchars(
+                        $item["valor"],
+                    ) ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
